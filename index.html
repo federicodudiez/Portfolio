@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Personale | Graphic Design & Art Direction</title>
+    <title>Federico Dudiez | Portfolio Personale</title>
     <style>
         /* Reset e Stili Generali */
         * {
@@ -14,7 +14,7 @@
         }
 
         body {
-            background-color: #0b0b0b;
+            background-color: #080808;
             color: #ffffff;
             line-height: 1.6;
             padding: 0 2rem;
@@ -26,26 +26,26 @@
             justify-content: space-between;
             align-items: center;
             padding: 2.5rem 0;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #1a1a1a;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
         nav a {
-            color: #888;
+            color: #777;
             text-decoration: none;
             margin-left: 2rem;
             transition: color 0.3s;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         nav a:hover {
@@ -55,72 +55,81 @@
         /* Sezione Hero (Presentazione) */
         .hero {
             max-width: 1200px;
-            margin: 5rem auto;
+            margin: 6rem auto 4rem auto;
             padding: 0;
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            line-height: 1.2;
+            line-height: 1.15;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            max-width: 800px;
+            max-width: 900px;
+            letter-spacing: -1px;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: #888;
-            max-width: 600px;
+            color: #666;
+            max-width: 650px;
         }
 
         /* Griglia del Portfolio */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
-            margin: 0 auto 5rem auto;
+            margin: 0 auto 6rem auto;
         }
 
         .portfolio-item {
-            background: #121212;
-            border: 1px solid #1c1c1c;
-            border-radius: 4px;
+            background: #0f0f0f;
+            border: 1px solid #161616;
+            border-radius: 6px;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
         }
 
         .portfolio-item:hover {
-            transform: translateY(-5px);
-            border-color: #444;
+            transform: translateY(-8px);
+            border-color: #333;
+        }
+
+        .portfolio-item .img-container {
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+            background: #111;
         }
 
         .portfolio-item img {
             width: 100%;
-            height: 450px;
+            height: 100%;
             object-fit: cover;
             display: block;
-            filter: grayscale(20%);
-            transition: filter 0.3s;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .portfolio-item:hover img {
-            filter: grayscale(0%);
+            transform: scale(1.04);
         }
 
         .item-info {
             padding: 1.5rem;
+            border-top: 1px solid #161616;
         }
 
         .item-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .item-info p {
-            color: #666;
-            font-size: 0.9rem;
+            color: #555;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -130,18 +139,19 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 0;
-            border-top: 1px solid #222;
+            border-top: 1px solid #1a1a1a;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: #444;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         footer a {
             color: #888;
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.3s;
         }
 
         footer a:hover {
@@ -153,8 +163,8 @@
             .hero h1 { font-size: 2.2rem; }
             header { flex-direction: column; gap: 1.5rem; text-align: center; }
             nav a { margin: 0 1rem; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .portfolio-item img { height: 350px; }
+            .portfolio-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .portfolio-item .img-container { height: 380px; }
             footer { flex-direction: column; gap: 1.5rem; text-align: center; }
         }
     </style>
@@ -163,82 +173,148 @@
 
     <!-- Navigazione -->
     <header>
-        <div class="logo">DEVID . STUDIO</div>
+        <div class="logo">Federico Dudiez</div>
         <nav>
             <a href="#progetti">Progetti</a>
             <a href="#contatti">Contatti</a>
         </nav>
     </header>
 
-    <!-- Presentazione -->
+    <!-- Presentazione Hero -->
     <section class="hero">
-        <h1>Graphic Design, Art Direction & Visual Exploration.</h1>
-        <p>Progettazione visiva per eventi, identità di brand ed editoria con un'estetica tagliente e contemporanea.</p>
+        <h1>Graphic Design, Visual Art & Brand Identity.</h1>
+        <p>Raccolta di progetti visivi editoriali, loghi commerciali, artwork per la clubbing culture ed eventi motoristici.</p>
     </section>
 
-    <!-- Griglia Lavori -->
+    <!-- Griglia Elementi Portfolio -->
     <main class="portfolio-grid" id="progetti">
         
-        <!-- Progetto 1 -->
+        <!-- Elemento 1: Vibes Magazine -->
         <div class="portfolio-item">
-            <!-- Sostituisci il nome del file con la tua immagine reale -->
-            <img src="vibes-magazine.jpg" alt="Vibes Motoring Magazine">
+            <div class="img-container">
+                <img src="https://i.ibb.co/35XCQYpF/copertina-auto.jpg" alt="Vibes Motoring Magazine">
+            </div>
             <div class="item-info">
-                <h3>VIBES Magazine</h3>
-                <p>Editorial Design & Cover Art</p>
+                <h3>VIBES Motoring Magazine</h3>
+                <p>Editorial Design / Cover Art</p>
             </div>
         </div>
 
-        <!-- Progetto 2 -->
+        <!-- Elemento 2: Glamour -->
         <div class="portfolio-item">
-            <img src="glamour-cover.jpg" alt="Glamour Magazine Concept">
+            <div class="img-container">
+                <img src="https://i.ibb.co/0VZGwPxQ/copertina-moda-esercitazione.jpg" alt="Glamour Magazine Concept">
+            </div>
             <div class="item-info">
                 <h3>GLAMOUR Style</h3>
-                <p>Fashion Poster & Typography</p>
+                <p>Fashion Poster / Typography</p>
             </div>
         </div>
 
-        <!-- Progetto 3 -->
+        <!-- Elemento 3: Strawhay Techno Field -->
         <div class="portfolio-item">
-            <img src="strawhay-techno.jpg" alt="Strawhay Techno Field">
+            <div class="img-container">
+                <img src="https://i.ibb.co/S4d38382/LOCANDINA-3-0.png" alt="Strawhay Techno Field">
+            </div>
             <div class="item-info">
                 <h3>Strawhay Techno Field</h3>
-                <p>Event Poster & Dark Artwork</p>
+                <p>Event Poster / Artwork</p>
             </div>
         </div>
 
-        <!-- Progetto 4 -->
+        <!-- Elemento 4: Techno Road -->
         <div class="portfolio-item">
-            <img src="devid-logo.jpg" alt="Devid Vinyl Logo">
-            <div class="item-info">
-                <h3>DEVid Vinyl</h3>
-                <p>Logo Design & Identity</p>
+            <div class="img-container">
+                <img src="https://i.ibb.co/hFZ0HMb2/techno-road-a3.jpg" alt="Techno Road">
             </div>
-        </div>
-
-        <!-- Progetto 5 -->
-        <div class="portfolio-item">
-            <img src="bivio-bar.jpg" alt="Bivio Bar Opening">
-            <div class="item-info">
-                <h3>Bivio Bar Event</h3>
-                <p>Flyer Design & Fluid Art</p>
-            </div>
-        </div>
-
-        <!-- Progetto 6 -->
-        <div class="portfolio-item">
-            <img src="techno-road.jpg" alt="Techno Road Flyer">
             <div class="item-info">
                 <h3>Techno Road</h3>
-                <p>Visual Flyer & Clubbing Culture</p>
+                <p>Event Flyer / Clubbing Culture</p>
+            </div>
+        </div>
+
+        <!-- Elemento 5: Virtual Rally Campobasso -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://i.ibb.co/fdwrH91x/virtual-rally-cb-aggiornato.jpg" alt="Virtual Rally Campobasso">
+            </div>
+            <div class="item-info">
+                <h3>Virtual Rally Campobasso</h3>
+                <p>Event Poster / Sport Graphics</p>
+            </div>
+        </div>
+
+        <!-- Elemento 6: Bivio Bar Event Flyer -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://i.ibb.co/G4F42xwX/post-IG.png" alt="Bivio Bar Opening Night">
+            </div>
+            <div class="item-info">
+                <h3>Bivio Bar Event</h3>
+                <p>Social Media Flyer / Fluid Art</p>
+            </div>
+        </div>
+
+        <!-- Elemento 7: Logo Devid -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://i.ibb.co/7J9JN0Wy/logo-david-1-page-0001.jpg" alt="DEVid Vinyl Logo">
+            </div>
+            <div class="item-info">
+                <h3>DEVid Vinyl</h3>
+                <p>Logo Design / Identity</p>
+            </div>
+        </div>
+
+        <!-- Elemento 8: Logo Bivio Bar -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://i.ibb.co/cc7Qbn7B/Bivio-Barlogo.png" alt="Bivio Bar Logo">
+            </div>
+            <div class="item-info">
+                <h3>Bivio Bar</h3>
+                <p>Minimal Logo Branding</p>
+            </div>
+        </div>
+
+        <!-- Elemento 9: Zeta Audio -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://i.ibb.co/YFqsYVJ2/cassa-fuoco.jpg" alt="Zeta Audio Logo">
+            </div>
+            <div class="item-info">
+                <h3>Zeta Audio</h3>
+                <p>Logo Concept / Vector Illustration</p>
+            </div>
+        </div>
+
+        <!-- Elemento 10: Spine -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://i.ibb.co/cXx8vKpW/spine.png" alt="Spine Photography">
+            </div>
+            <div class="item-info">
+                <h3>Spine</h3>
+                <p>Black & White Photography</p>
+            </div>
+        </div>
+
+        <!-- Elemento 11: Ticket Entry -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://i.ibb.co/GfTP47XG/ticket-5x5-01.png" alt="Event Ticket Concept">
+            </div>
+            <div class="item-info">
+                <h3>Event Ticket Pass</h3>
+                <p>Print Design / Merchandise</p>
             </div>
         </div>
 
     </main>
 
-    <!-- Piè di pagina / Contatti -->
+    <!-- Footer / Contatti -->
     <footer id="contatti">
-        <div>© 2026 DEVID . STUDIO. Tutti i diritti riservati.</div>
+        <div>© 2026 Federico Dudiez. Tutti i diritti riservati.</div>
         <div>Iniziamo un progetto: <a href="mailto:tuanome@email.com">Scrivimi via Email</a></div>
     </footer>
 
