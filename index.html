@@ -146,18 +146,19 @@
         </div>
     </main>
 
-        <section class="contact" id="contatti">
+            <section class="contact" id="contatti">
         <h2>Iniziamo un progetto insieme</h2>
-        <p>Hai un'idea visiva da sviluppare o vuoi strutturare l'identità del tuo brand commerciale? Compila il modulo sotto per inviarmi direttamente un messaggio sulla mia mail.</p>
+        <p style="margin-bottom: 2rem;">Hai un'idea visiva da sviluppare o vuoi strutturare l'identità del tuo brand commerciale? Copia la mia email o scrivimi direttamente.</p>
         
-        <!-- Modulo di contatto diretto su Gmail senza blocchi del browser -->
-        <form action="https://formsubmit.co" method="POST" style="max-width: 500px; margin: 2rem auto 0 auto; display: flex; flex-direction: column; gap: 1.2rem; text-align: left;">
-            <input type="text" name="name" placeholder="Il tuo nome" required style="width: 100%; padding: 1rem; background: #161616; border: 1px solid #222; border-radius: 6px; color: #fff; font-size: 1rem;">
-            <input type="email" name="email" placeholder="La tua email" required style="width: 100%; padding: 1rem; background: #161616; border: 1px solid #222; border-radius: 6px; color: #fff; font-size: 1rem;">
-            <textarea name="message" placeholder="Descrivi il tuo progetto..." rows="5" required style="width: 100%; padding: 1rem; background: #161616; border: 1px solid #222; border-radius: 6px; color: #fff; font-size: 1rem; resize: none;"></textarea>
-            <button type="submit" class="btn" style="width: 100%; cursor: pointer; border: none;">Invia Messaggio</button>
-        </form>
+        <!-- Email scritta in chiaro, grande e professionale -->
+        <h3 style="font-size: 2rem; font-weight: 700; letter-spacing: 1px; color: #fff; margin-bottom: 2rem;">federico.dudiez@gmail.com</h3>
+        
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+            <!-- Pulsante email standard -->
+            <a href="mailto:federico.dudiez@gmail.com" class="btn">Scrivi Email</a>
+            
+            <!-- Pulsante copia veloce con avviso visivo -->
+            <button onclick="navigator.clipboard.writeText('federico.dudiez@gmail.com'); alert('Email copiata negli appunti!');" class="btn" style="background: #161616; color: #fff; border: 1px solid #333; cursor: pointer;">Copia Indirizzo</button>
+        </div>
     </section>
 
-</body>
-</html>
