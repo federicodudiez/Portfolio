@@ -3,243 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Federico Dudiez | Portfolio Personale</title>
+    <title>Federico Dudiez | Portfolio</title>
     <style>
-        /* Reset e Stili Generali */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: #080808; color: #ffffff; padding: 0 2rem; line-height: 1.6; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; border-bottom: 1px solid #1a1a1a; max-width: 1200px; margin: 0 auto; }
+        .brand-container { display: flex; align-items: center; gap: 1.2rem; }
+        .brand-logo-img { height: 50px; width: auto; object-fit: contain; }
+        .logo-text { font-size: 1.3rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+        nav a { color: #777; text-decoration: none; margin-left: 2rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.3s; }
+        nav a:hover { color: #fff; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        .hero { max-width: 1200px; margin: 6rem auto 4rem auto; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.15; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        .hero p { font-size: 1.2rem; color: #666; max-width: 650px; }
 
-        body {
-            background-color: #080808;
-            color: #ffffff;
-            line-height: 1.6;
-            padding: 0 2rem;
-        }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto 6rem auto; }
+        .portfolio-item { background: #0f0f0f; border: 1px solid #161616; border-radius: 6px; overflow: hidden; transition: transform 0.4s ease, border-color 0.4s; }
+        .portfolio-item:hover { transform: translateY(-8px); border-color: #333; }
+        .img-container { width: 100%; height: 420px; overflow: hidden; background: #111; display: flex; align-items: center; justify-content: center; }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+        .portfolio-item.white-bg img { object-fit: contain; background: #ffffff; padding: 2rem; }
+        .portfolio-item:hover img { transform: scale(1.04); }
+        .item-info { padding: 1.5rem; border-top: 1px solid #161616; }
+        .item-info h3 { font-size: 1.1rem; margin-bottom: 0.4rem; font-weight: 600; }
+        .item-info p { color: #555; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Header e Navbar */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2.5rem 0;
-            border-bottom: 1px solid #1a1a1a;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .contact-section { max-width: 1200px; margin: 8rem auto; padding: 6rem 4rem; background: linear-gradient(135deg, #121212 0%, #050505 100%); border: 1px solid #1e1e1e; border-radius: 16px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .contact-section h2 { font-size: 3.2rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        .contact-section p { font-size: 1.2rem; color: #888; max-width: 650px; margin: 0 auto 3rem auto; }
+        .contact-button { display: inline-block; background-color: #ffffff; color: #000000; padding: 1.3rem 4rem; font-size: 1.05rem; font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1.5px; transition: transform 0.3s, background-color 0.3s; }
+        .contact-button:hover { transform: translateY(-4px); background-color: #f0f0f0; }
+        
+        footer { max-width: 1200px; margin: 0 auto; padding: 3rem 0; border-top: 1px solid #1a1a1a; display: flex; justify-content: space-between; align-items: center; color: #444; font-size: 0.85rem; }
 
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-        }
-
-        .brand-logo-img {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .logo-text {
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        nav a {
-            color: #777;
-            text-decoration: none;
-            margin-left: 2rem;
-            transition: color 0.3s;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        nav a:hover {
-            color: #fff;
-        }
-
-        /* Sezione Hero (Presentazione) */
-        .hero {
-            max-width: 1200px;
-            margin: 6rem auto 4rem auto;
-            padding: 0;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            max-width: 900px;
-            letter-spacing: -1px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 650px;
-        }
-
-        /* Griglia del Portfolio */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto 6rem auto;
-        }
-
-        .portfolio-item {
-            background: #0f0f0f;
-            border: 1px solid #161616;
-            border-radius: 6px;
-            overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-8px);
-            border-color: #333;
-        }
-
-        .portfolio-item .img-container {
-            width: 100%;
-            height: 420px;
-            overflow: hidden;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .portfolio-item.white-bg img {
-            object-fit: contain;
-            background: #ffffff;
-            padding: 2rem;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.04);
-        }
-
-        .item-info {
-            padding: 1.5rem;
-            border-top: 1px solid #161616;
-        }
-
-        .item-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.4rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .item-info p {
-            color: #555;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Sezione Contatti Ingrandita ed Esterna */
-        .contact-section {
-            max-width: 1200px;
-            margin: 8rem auto;
-            padding: 6rem 4rem;
-            background: linear-gradient(135deg, #121212 0%, #050505 100%);
-            border: 1px solid #1e1e1e;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .contact-section h2 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .contact-section p {
-            font-size: 1.2rem;
-            color: #888;
-            max-width: 650px;
-            margin: 0 auto 3rem auto;
-            line-height: 1.8;
-        }
-
-        .contact-button {
-            display: inline-block;
-            background-color: #ffffff;
-            color: #000000;
-            padding: 1.3rem 4rem;
-            font-size: 1.05rem;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .contact-button:hover {
-            transform: translateY(-4px);
-            background-color: #f0f0f0;
-            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
-        }
-
-        /* Footer */
-        footer {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 0;
-            border-top: 1px solid #1a1a1a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #444;
-            font-size: 0.85rem;
-        }
-
-        /* Responsive Mobile */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             header { flex-direction: column; gap: 1.5rem; text-align: center; }
-            .brand-container { flex-direction: column; gap: 0.5rem; }
             nav a { margin: 0 1rem; }
-            .portfolio-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .portfolio-item .img-container { height: 380px; }
-            .contact-section { padding: 4rem 1.5rem; margin: 4rem auto; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .contact-section { padding: 4rem 1.5rem; }
             .contact-section h2 { font-size: 2.2rem; }
-            .contact-section p { font-size: 1rem; }
-            footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+            footer { flex-direction: column; gap: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigazione Header -->
     <header>
         <div class="brand-container">
-            <img src="https://ibb.co" alt="Federico Dudiez Logo" class="brand-logo-img">
+            <img src="https://ibb.co" alt="Logo" class="brand-logo-img">
             <div class="logo-text">Federico Dudiez</div>
         </div>
         <nav>
@@ -248,170 +63,72 @@
         </nav>
     </header>
 
-    <!-- Presentazione Hero -->
     <section class="hero">
         <h1>Graphic Design, Visual Art & Brand Identity.</h1>
         <p>Raccolta di progetti visivi editoriali, loghi commerciali, artwork per la clubbing culture ed eventi motoristici.</p>
     </section>
 
-    <!-- Griglia Elementi Portfolio -->
     <main class="portfolio-grid" id="progetti">
-        
-        <!-- Elemento 1 -->
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Vibes Motoring Magazine">
-            </div>
-            <div class="item-info">
-                <h3>VIBES Motoring Magazine</h3>
-                <p>Editorial Design / Cover Art</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Vibes"></div>
+            <div class="item-info"><h3>VIBES Motoring Magazine</h3><p>Editorial Design</p></div>
         </div>
-
-        <!-- Elemento 2 -->
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Glamour Magazine Concept">
-            </div>
-            <div class="item-info">
-                <h3>GLAMOUR Style</h3>
-                <p>Fashion Poster / Typography</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Glamour"></div>
+            <div class="item-info"><h3>GLAMOUR Style</h3><p>Fashion Poster</p></div>
         </div>
-
-        <!-- Elemento 3 -->
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Strawhay Techno Field">
-            </div>
-            <div class="item-info">
-                <h3>Strawhay Techno Field</h3>
-                <p>Event Poster / Artwork</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Strawhay"></div>
+            <div class="item-info"><h3>Strawhay Techno Field</h3><p>Event Poster</p></div>
         </div>
-
-        <!-- Elemento 4 -->
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Techno Road">
-            </div>
-            <div class="item-info">
-                <h3>Techno Road</h3>
-                <p>Event Flyer / Clubbing Culture</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Techno Road"></div>
+            <div class="item-info"><h3>Techno Road</h3><p>Event Flyer</p></div>
         </div>
-
-        <!-- Elemento 5 -->
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Virtual Rally Campobasso">
-            </div>
-            <div class="item-info">
-                <h3>Virtual Rally Campobasso</h3>
-                <p>Event Poster / Sport Graphics</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Rally"></div>
+            <div class="item-info"><h3>Virtual Rally Campobasso</h3><p>Sport Graphics</p></div>
         </div>
-
-        <!-- Elemento 6 -->
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Bivio Bar Opening Night">
-            </div>
-            <div class="item-info">
-                <h3>Bivio Bar Event</h3>
-                <p>Social Media Flyer / Fluid Art</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Bivio Bar"></div>
+            <div class="item-info"><h3>Bivio Bar Event</h3><p>Social Media Flyer</p></div>
         </div>
-
-        <!-- Elemento 7 -->
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="DEVid Vinyl Logo">
-            </div>
-            <div class="item-info">
-                <h3>DEVid Vinyl</h3>
-                <p>Logo Design / Identity</p>
-            </div>
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Bivio Bar Logo">
-            </div>
-            <div class="item-info">
-                <h3>Bivio Bar</h3>
-                <p>Minimal Logo Branding</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="DEVid"></div>
+            <div class="item-info"><h3>DEVid Vinyl</h3><p>Logo Design</p></div>
         </div>
-
+        <div class="portfolio-item">
+            <div class="img-container"><img src="https://ibb.co" alt="Bivio Logo"></div>
+            <div class="item-info"><h3>Bivio Bar</h3><p>Minimal Branding</p></div>
+        </div>
         <div class="portfolio-item white-bg">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Zeta Audio Logo">
-            </div>
-            <div class="item-info">
-                <h3>Zeta Audio</h3>
-                <p>Logo Concept / Vector Illustration</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Zeta"></div>
+            <div class="item-info"><h3>Zeta Audio</h3><p>Vector Illustration</p></div>
         </div>
-
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Spine Photography">
-            </div>
-            <div class="item-info">
-                <h3>Spine</h3>
-                <p>Black & White Photography</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Spine"></div>
+            <div class="item-info"><h3>Spine</h3><p>Black & White Photography</p></div>
         </div>
-
         <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Event Ticket Concept">
-            </div>
-            <div class="item-info">
-                <h3>Event Ticket Pass</h3>
-                <p>Print Design / Merchandise</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Ticket"></div>
+            <div class="item-info"><h3>Event Ticket Pass</h3><p>Print Design</p></div>
         </div>
-
         <div class="portfolio-item white-bg">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Mini Cooper Stickers Cofano">
-            </div>
-            <div class="item-info">
-                <h3>Mini Cooper Stickers (Bonnet Layout)</h3>
-                <p>Automotive Graphics / Vinyl Design</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Mini 1"></div>
+            <div class="item-info"><h3>Mini Cooper Stickers (Bonnet)</h3><p>Automotive Graphics</p></div>
         </div>
-
         <div class="portfolio-item white-bg">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Mini Cooper Stickers Porta DX">
-            </div>
-            <div class="item-info">
-                <h3>Mini Cooper Stickers (Right Door Layout)</h3>
-                <p>Automotive Graphics / Branding</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Mini 2"></div>
+            <div class="item-info"><h3>Mini Cooper Stickers (Right Door)</h3><p>Automotive Graphics</p></div>
         </div>
-
         <div class="portfolio-item white-bg">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Mini Cooper Stickers Porta SX">
-            </div>
-            <div class="item-info">
-                <h3>Mini Cooper Stickers (Left Door Layout)</h3>
-                <p>Automotive Graphics / Branding</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Mini 3"></div>
+            <div class="item-info"><h3>Mini Cooper Stickers (Left Door)</h3><p>Automotive Graphics</p></div>
         </div>
-
         <div class="portfolio-item white-bg">
-            <div class="img-container">
-                <img src="https://ibb.co" alt="Mini Cooper Stickers Tetto">
-            </div>
-            <div class="item-info">
-                <h3>Mini Cooper Stickers (Roof Layout)</h3>
-                <p>Automotive Graphics / Geometric Layout</p>
-            </div>
+            <div class="img-container"><img src="https://ibb.co" alt="Mini 4"></div>
+            <div class="item-info"><h3>Mini Cooper Stickers (Roof)</h3><p>Geometric Layout</p></div>
         </div>
-
     </main>
 
     <section class="contact-section" id="contatti">
