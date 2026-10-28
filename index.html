@@ -22,11 +22,15 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
             max-width: 1400px;
+            width: 100%;
             margin: 0 auto 4rem auto;
             display: flex;
             justify-content: space-between;
@@ -61,7 +65,11 @@
             color: var(--text-color);
         }
 
-        /* Griglia Masonry Avanzata con CSS Columns */
+        main {
+            flex: 1;
+            width: 100%;
+        }
+
         .masonry-grid {
             max-width: 1400px;
             margin: 0 auto;
@@ -130,6 +138,46 @@
             letter-spacing: 0.05em;
         }
 
+        /* Sezione Contatti */
+        footer {
+            max-width: 1400px;
+            width: 100%;
+            margin: 6rem auto 2rem auto;
+            border-top: 1px solid #2c2c2e;
+            padding-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-email {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact-email:hover {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+        }
+
         .error-message {
             text-align: center;
             padding: 4rem;
@@ -151,17 +199,22 @@
         </nav>
     </header>
 
-    <main id="gallery" class="masonry-grid">
-        <!-- I progetti verranno inseriti dinamicamente qui -->
+    <main>
+        <div id="gallery" class="masonry-grid">
+            <!-- I progetti verranno inseriti dinamicamente qui -->
+        </div>
     </main>
+
+    <footer>
+        <div class="contact-title">Mettiamoci in contatto</div>
+        <a href="mailto:federico.dudiez@gmail.com" class="contact-email">federico.dudiez@gmail.com</a>
+    </footer>
 
     <script>
         let allProjects = [];
 
-        // Caricamento asincrono dal file JSON esterno
         async function loadProjects() {
             try {
-                // Utilizza un percorso relativo per leggere il file nello stesso repository
                 const response = await fetch('./projects.json');
                 if (!response.ok) throw new Error('Impossibile caricare il file JSON dei progetti');
                 
@@ -195,7 +248,6 @@
             });
         }
 
-        // Gestione dei filtri di navigazione
         document.getElementById('filters').addEventListener('click', (e) => {
             if (!e.target.classList.contains('filter-btn')) return;
 
@@ -211,7 +263,6 @@
             }
         });
 
-        // Avvia l'applicazione al caricamento della pagina
         window.addEventListener('DOMContentLoaded', loadProjects);
     </script>
 </body>
