@@ -1,98 +1,325 @@
-const allProjects = [
-  {
-    "title": "Abstract Geometric Exploration",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Visual Arts / Vector Illustration"
-  },
-  {
-    "title": "Custom Livery Design - Mini Cooper (Hood)",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Vehicle Graphics / Automotive Branding"
-  },
-  {
-    "title": "Custom Livery Design - Mini Cooper (Right Side)",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Vehicle Graphics / Wrap Design"
-  },
-  {
-    "title": "Custom Livery Design - Mini Cooper (Left Side)",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Vehicle Graphics / Wrap Design"
-  },
-  {
-    "title": "Custom Livery Design - Mini Cooper (Roof)",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Vehicle Graphics / Automotive Customization"
-  },
-  {
-    "title": "Bivio Bar - Brand Identity",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Logo Design / Corporate Identity"
-  },
-  {
-    "title": "Chiaroscuro Still Life",
-    "category": "photography",
-    "imageUrl": "https://ibb.co",
-    "tag": "Commercial Photography / Fine Art"
-  },
-  {
-    "title": "Automotive Editorial - Concept Cover",
-    "category": "photography",
-    "imageUrl": "https://ibb.co",
-    "tag": "Automotive Photography / Art Direction"
-  },
-  {
-    "title": "Fashion Editorial - Magazine Concept",
-    "category": "photography",
-    "imageUrl": "https://ibb.co",
-    "tag": "Fashion Photography / Editorial Design"
-  },
-  {
-    "title": "Event Poster 3.0",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Poster Design / Event Marketing"
-  },
-  {
-    "title": "David - Personal Branding & Logo",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Identity System / Minimalist Logo"
-  },
-  {
-    "title": "Social Media Editorial Layout",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Social Media Design / Content Creation"
-  },
-  {
-    "title": "Experimental Typographic Element",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Graphic Element / Asset Design"
-  },
-  {
-    "title": "Techno Road Poster (A3)",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Print Design / Poster Art"
-  },
-  {
-    "title": "Event Pass & Admission Ticket Design",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Print Layout / Branding"
-  },
-  {
-    "title": "Virtual Rally Championship - Campaign",
-    "category": "design",
-    "imageUrl": "https://ibb.co",
-    "tag": "Key Visual / Poster Design"
-  }
-];
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio / Creative Space</title>
+    <style>
+        :root {
+            --bg-color: #0c0c0e;
+            --text-color: #f5f5f7;
+            --accent-color: #ff3b30;
+            --muted-color: #8e8e93;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding: 4rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto 4rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .brand h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+
+        .brand p {
+            color: var(--muted-color);
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--muted-color);
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav button.active, nav button:hover {
+            color: var(--text-color);
+        }
+
+        main {
+            flex: 1;
+            width: 100%;
+        }
+
+        .masonry-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .masonry-grid { column-count: 2; }
+        }
+        @media (max-width: 600px) {
+            .masonry-grid { column-count: 1; }
+        }
+
+        .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            background: #1c1c1e;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.4s;
+        }
+
+        .portfolio-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        .item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .item-overlay {
+            opacity: 1;
+        }
+
+        .item-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-overlay p {
+            font-size: 0.85rem;
+            color: #d1d1d6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 6, 8, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 2.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        footer {
+            max-width: 1400px;
+            width: 100%;
+            margin: 6rem auto 2rem auto;
+            border-top: 1px solid #2c2c2e;
+            padding-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-email {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact-email:hover {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <h1>Studio Portfolio</h1>
+            <p>Graphic Design & Fotografia</p>
+        </div>
+        <nav id="filters">
+            <button class="filter-btn active" data-filter="all">Tutti</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="photography">Fotografia</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="gallery" class="masonry-grid"></div>
+    </main>
+
+    <footer>
+        <div class="contact-title">Mettiamoci in contatto</div>
+        <a href="mailto:federico.dudiez@gmail.com" class="contact-email">federico.dudiez@gmail.com</a>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <img id="lightbox-img" src="" alt="Ingrandimento">
+    </div>
+
+    <script src="./projects.js"></script>
+    <script>
+        function renderGallery(projectsToRender) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+
+            projectsToRender.forEach(project => {
+                const item = document.createElement('div');
+                item.className = 'portfolio-item';
+                item.setAttribute('data-src', project.imageUrl);
+                
+                item.innerHTML = `
+                    <img src="${project.imageUrl}" alt="${project.title}" loading="lazy">
+                    <div class="item-overlay">
+                        <h3>${project.title}</h3>
+                        <p>${project.tag}</p>
+                    </div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        document.getElementById('filters').addEventListener('click', (e) => {
+            if (!e.target.classList.contains('filter-btn')) return;
+
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+
+            const filterValue = e.target.getAttribute('data-filter');
+            if (filterValue === 'all') {
+                renderGallery(allProjects);
+            } else {
+                const filtered = allProjects.filter(p => p.category === filterValue);
+                renderGallery(filtered);
+            }
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.getElementById('gallery').addEventListener('click', (e) => {
+            const item = e.target.closest('.portfolio-item');
+            if (!item) return;
+
+            lightboxImg.src = item.getAttribute('data-src');
+            lightbox.classList.add('active');
+        });
+
+        document.getElementById('lightbox-close').addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.classList.remove('active');
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof allProjects !== 'undefined') {
+                renderGallery(allProjects);
+            }
+        });
+    </script>
+</body>
+</html>
