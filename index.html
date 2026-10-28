@@ -51,21 +51,6 @@
             font-size: 1rem;
         }
 
-        nav button {
-            background: none;
-            border: none;
-            color: var(--muted-color);
-            font-size: 1rem;
-            cursor: pointer;
-            margin-left: 1.5rem;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        nav button.active, nav button:hover {
-            color: var(--text-color);
-        }
-
         main {
             flex: 1;
             width: 100%;
@@ -192,7 +177,6 @@
             opacity: 1;
         }
 
-        /* Sezione Footer / Contatti */
         footer {
             max-width: 1400px;
             width: 100%;
@@ -201,7 +185,7 @@
             padding-top: 3rem;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
         }
 
         .contact-left .contact-title {
@@ -296,11 +280,6 @@
             <h1>Studio Portfolio</h1>
             <p>Graphic Design & Fotografia</p>
         </div>
-        <nav id="filters">
-            <button class="filter-btn active" data-filter="all">All Works</button>
-            <button class="filter-btn" data-filter="design">Graphic Design</button>
-            <button class="filter-btn" data-filter="photography">Photography</button>
-        </nav>
     </header>
 
     <main>
@@ -348,48 +327,33 @@
             });
         }
 
-        document.getElementById('filters').addEventListener('click', (e) => {
-            if (!e.target.classList.contains('filter-btn')) return;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
 
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            e.target.classList.add('active');
+        document.getElementById('gallery').addEventListener('click', (e) => {
+            const item = e.target.closest('.portfolio-item');
+            if (!item) return;
 
-            const filterValue = e.target.getAttribute('data-filter');
-            if (filterValue === 'all') {
-                        renderGallery(allProjects);
-    } else {
-        const filtered = allProjects.filter(p => p.category === filterValue);
-        renderGallery(filtered);
-    }
-});
+            lightboxImg.src = item.getAttribute('data-src');
+            lightbox.classList.add('active');
+        });
 
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
+        document.getElementById('lightbox-close').addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
 
-document.getElementById('gallery').addEventListener('click', (e) => {
-    const item = e.target.closest('.portfolio-item');
-    if (!item) return;
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.classList.remove('active');
+        });
 
-    lightboxImg.src = item.getAttribute('data-src');
-    lightbox.classList.add('active');
-});
-
-document.getElementById('lightbox-close').addEventListener('click', () => {
-    lightbox.classList.remove('active');
-});
-
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) lightbox.classList.remove('active');
-});
-
-document.getElementById('copy-email-btn').addEventListener('click', function() {
-    const emailText = this.innerText;
-    navigator.clipboard.writeText(emailText).then(() => {
-        const toast = document.getElementById('copy-toast');
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 2000);
+        document.getElementById('copy-email-btn').addEventListener('click', function() {
+            const emailText = this.innerText;
+            navigator.clipboard.writeText(emailText).then(() => {
+                const toast = document.getElementById('copy-toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                     }, 2000);
     }).catch(err => {
         console.error('Errore durante la copia: ', err);
     });
@@ -403,3 +367,4 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
