@@ -3,200 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Federico Dudiez | Portfolio</title>
+    <title>Portfolio / Creative Space</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
-        html { scroll-behavior: smooth; }
-        body { background-color: #080808; color: #ffffff; padding: 0 2rem; line-height: 1.6; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; border-bottom: 1px solid #1a1a1a; max-width: 1200px; margin: 0 auto; }
-        .brand-container { display: flex; align-items: center; gap: 1.2rem; }
-        .brand-logo-img { height: 50px; width: auto; object-fit: contain; }
-        .logo-text { font-size: 1.3rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
-        nav a { color: #777; text-decoration: none; margin-left: 2rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.3s; }
-        nav a:hover { color: #fff; }
+        :root {
+            --bg-color: #0c0c0e;
+            --text-color: #f5f5f7;
+            --accent-color: #ff3b30;
+            --muted-color: #8e8e93;
+        }
 
-        .hero { max-width: 1200px; margin: 6rem auto 4rem auto; }
-        .hero h1 { font-size: 3.5rem; line-height: 1.15; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -1px; }
-        .hero p { font-size: 1.2rem; color: #666; max-width: 650px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto 6rem auto; }
-        .portfolio-item { background: #0f0f0f; border: 1px solid #161616; border-radius: 6px; overflow: hidden; transition: transform 0.4s ease, border-color 0.4s; cursor: pointer; }
-        .portfolio-item:hover { transform: translateY(-8px); border-color: #333; }
-        .img-container { width: 100%; height: 420px; overflow: hidden; background: #111; display: flex; align-items: center; justify-content: center; }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
-        .portfolio-item.white-bg img { object-fit: contain; background: #ffffff; padding: 2rem; }
-        .portfolio-item:hover img { transform: scale(1.04); }
-        .item-info { padding: 1.5rem; border-top: 1px solid #161616; }
-        .item-info h3 { font-size: 1.1rem; margin-bottom: 0.4rem; font-weight: 600; }
-        .item-info p { color: #555; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding: 4rem 2rem;
+        }
 
-        /* Stili della Finestra Lightbox (Schermo Intero) */
-        .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(4, 4, 4, 0.95); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; padding: 2rem; }
-        .lightbox.active { display: flex; opacity: 1; }
-        .lightbox-content { max-width: 90%; max-height: 85vh; object-fit: contain; border-radius: 4px; box-shadow: 0 10px 50px rgba(0,0,0,0.8); transform: scale(0.95); transition: transform 0.3s ease; }
-        .lightbox.active .lightbox-content { transform: scale(1); }
-        .lightbox-close { position: absolute; top: 2rem; right: 2rem; color: #fff; font-size: 3rem; font-weight: 300; cursor: pointer; user-select: none; transition: color 0.3s; }
-        .lightbox-close:hover { color: #888; }
+        header {
+            max-width: 1400px;
+            margin: 0 auto 4rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
 
-        .contact-section { max-width: 1200px; margin: 8rem auto; padding: 6rem 4rem; background: linear-gradient(135deg, #121212 0%, #050505 100%); border: 1px solid #1e1e1e; border-radius: 16px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .contact-section h2 { font-size: 3.2rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -1px; }
-        .contact-section p { font-size: 1.2rem; color: #888; max-width: 650px; margin: 0 auto 3rem auto; }
-        .btn { display: inline-block; background-color: #ffffff; color: #000000; padding: 1.3rem 4rem; font-size: 1.05rem; font-weight: 700; text-decoration: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 1.5px; transition: transform 0.3s, background-color 0.3s; }
-        .btn:hover { transform: translateY(-4px); background-color: #f0f0f0; }
-        
-        footer { max-width: 1200px; margin: 0 auto; padding: 3rem 0; border-top: 1px solid #1a1a1a; display: flex; justify-content: space-between; align-items: center; color: #444; font-size: 0.85rem; }
+        .brand h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            header { flex-direction: column; gap: 1.5rem; text-align: center; }
-            nav a { margin: 0 1rem; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .contact-section { padding: 4rem 1.5rem; }
-            .contact-section h2 { font-size: 2.2rem; }
-            footer { flex-direction: column; gap: 1.5rem; }
-            .lightbox { padding: 1rem; }
-            .lightbox-close { top: 1rem; right: 1.5rem; font-size: 2.5rem; }
+        .brand p {
+            color: var(--muted-color);
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--muted-color);
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav button.active, nav button:hover {
+            color: var(--text-color);
+        }
+
+        /* Griglia Masonry Avanzata con CSS Columns */
+        .masonry-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .masonry-grid { column-count: 2; }
+        }
+        @media (max-width: 600px) {
+            .masonry-grid { column-count: 1; }
+        }
+
+        .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            background: #1c1c1e;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.4s;
+        }
+
+        .portfolio-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        .item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .item-overlay {
+            opacity: 1;
+        }
+
+        .item-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-overlay p {
+            font-size: 0.85rem;
+            color: #d1d1d6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 4rem;
+            color: var(--accent-color);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="brand-container">
-            <img src="https://ibb.co" alt="Federico Dudiez Logo" class="brand-logo-img">
-            <div class="logo-text">Federico Dudiez</div>
+        <div class="brand">
+            <h1>Studio Portfolio</h1>
+            <p>Graphic Design & Fotografia</p>
         </div>
-        <nav>
-            <a href="#progetti">Progetti</a>
-            <a href="#contatti">Contatti</a>
+        <nav id="filters">
+            <button class="filter-btn active" data-filter="all">Tutti</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="photography">Fotografia</button>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Graphic Design, Visual Art & Brand Identity.</h1>
-        <p>Raccolta di progetti visivi editoriali, loghi commerciali, artwork per la clubbing culture ed eventi motoristici. Clicca su un lavoro per aprirlo a schermo intero.</p>
-    </section>
-
-    <main class="portfolio-grid" id="progetti">
-        <!-- 1 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Vibes"></div>
-            <div class="item-info"><h3>VIBES Motoring Magazine</h3><p>Editorial Design</p></div>
-        </div>
-        <!-- 2 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Glamour"></div>
-            <div class="item-info"><h3>GLAMOUR Style</h3><p>Fashion Poster</p></div>
-        </div>
-        <!-- 3 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Strawhay"></div>
-            <div class="item-info"><h3>Strawhay Techno Field</h3><p>Event Poster</p></div>
-        </div>
-        <!-- 4 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Techno"></div>
-            <div class="item-info"><h3>Techno Road</h3><p>Event Flyer</p></div>
-        </div>
-        <!-- 5 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Rally"></div>
-            <div class="item-info"><h3>Virtual Rally Campobasso</h3><p>Sport Graphics</p></div>
-        </div>
-        <!-- 6 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Bivio Event"></div>
-            <div class="item-info"><h3>Bivio Bar Event</h3><p>Social Media Flyer</p></div>
-        </div>
-        <!-- 7 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="DEVid"></div>
-            <div class="item-info"><h3>DEVid Vinyl</h3><p>Logo Design</p></div>
-        </div>
-        <!-- 8 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Bivio Logo"></div>
-            <div class="item-info"><h3>Bivio Bar</h3><p>Minimal Branding</p></div>
-        </div>
-        <!-- 9 -->
-        <div class="portfolio-item white-bg" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Zeta"></div>
-            <div class="info"><h3>Zeta Audio</h3><p>Vector Illustration</p></div>
-        </div>
-        <!-- 10 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Spine"></div>
-            <div class="item-info"><h3>Spine</h3><p>Photography</p></div>
-        </div>
-        <!-- 11 -->
-        <div class="portfolio-item" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Ticket"></div>
-            <div class="item-info"><h3>Event Ticket Pass</h3><p>Print Design</p></div>
-        </div>
-        <!-- 12 -->
-        <div class="portfolio-item white-bg" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Mini 1"></div>
-            <div class="item-info"><h3>Mini Cooper Stickers (Bonnet Layout)</h3><p>Automotive Graphics</p></div>
-        </div>
-        <!-- 13 -->
-        <div class="portfolio-item white-bg" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Mini 2"></div>
-            <div class="item-info"><h3>Mini Cooper Stickers (Right Door Layout)</h3><p>Automotive Graphics</p></div>
-        </div>
-        <!-- 14 -->
-        <div class="portfolio-item white-bg" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Mini 3"></div>
-            <div class="item-info"><h3>Mini Cooper Stickers (Left Door Layout)</h3><p>Automotive Graphics</p></div>
-        </div>
-        <!-- 15 -->
-        <div class="portfolio-item white-bg" onclick="openLightbox(this)">
-            <div class="img-container"><img src="https://ibb.co" alt="Mini 4"></div>
-            <div class="item-info"><h3>Mini Cooper Stickers (Roof Layout)</h3><p>Geometric Layout</p></div>
-        </div>
+    <main id="gallery" class="masonry-grid">
+        <!-- I progetti verranno inseriti dinamicamente qui -->
     </main>
 
-    <!-- La Finestra Lightbox vuota che si popolerà via Javascript -->
-    <div id="customLightbox" class="lightbox" onclick="closeLightbox(event)">
-        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" src="" alt="A schermo intero">
-    </div>
-
-    <section class="contact-section" id="contatti">
-        <h2>Iniziamo un progetto insieme</h2>
-        <p style="margin-bottom: 2rem;">Hai un'idea visiva da sviluppare o vuoi strutturare l'identità del tuo brand commerciale? Copia la mia email o scrivimi direttamente.</p>
-        <h3 style="font-size: 2rem; font-weight: 700; letter-spacing: 1px; color: #fff; margin-bottom: 2rem;">federico.dudiez@gmail.com</h3>
-        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-            <a href="mailto:federico.dudiez@gmail.com" class="btn">Scrivi Email</a>
-            <button onclick="navigator.clipboard.writeText('federico.dudiez@gmail.com'); alert('Email copiata negli appunti!');" class="btn" style="background: #161616; color: #fff; border: 1px solid #333; cursor: pointer;">Copia Indirizzo</button>
-        </div>
-    </section>
-
-    <footer>
-        <div>© 2026 Federico Dudiez. Tutti i diritti riservati.</div>
-    </footer>
-
-    <!-- Logica JavaScript per gestire l'apertura ottimale delle immagini -->
     <script>
-        function openLightbox(element) {
-            const imgSrc = element.querySelector('img').src;
-            const lightbox = document.getElementById('customLightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
-            
-            lightboxImg.src = imgSrc;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Blocca lo scroll del sito sotto
-        }
+        let allProjects = [];
 
-        function closeLightbox(event) {
-            // Chiude solo se clicchi sullo sfondo o sulla X, non se clicchi sull'immagine stessa
-            if (event.target.id === 'customLightbox' || event.target.className === 'lightbox-close') {
-                const lightbox = document.getElementById('customLightbox');
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Riattiva lo scroll
+        // Caricamento asincrono dal file JSON esterno
+        async function loadProjects() {
+            try {
+                // Utilizza un percorso relativo per leggere il file nello stesso repository
+                const response = await fetch('./projects.json');
+                if (!response.ok) throw new Error('Impossibile caricare il file JSON dei progetti');
+                
+                allProjects = await response.json();
+                renderGallery(allProjects);
+            } catch (error) {
+                console.error(error);
+                document.getElementById('gallery').innerHTML = `
+                    <div class="error-message">
+                        <p>Errore nel caricamento dei progetti. Verifica che projects.json sia presente e formattato correttamente.</p>
+                    </div>`;
             }
         }
-    </script>
 
+        function renderGallery(projectsToRender) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+
+            projectsToRender.forEach(project => {
+                const item = document.createElement('div');
+                item.className = `portfolio-item`;
+                
+                item.innerHTML = `
+                    <img src="${project.imageUrl}" alt="${project.title}" loading="lazy">
+                    <div class="item-overlay">
+                        <h3>${project.title}</h3>
+                        <p>${project.tag}</p>
+                    </div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        // Gestione dei filtri di navigazione
+        document.getElementById('filters').addEventListener('click', (e) => {
+            if (!e.target.classList.contains('filter-btn')) return;
+
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+
+            const filterValue = e.target.getAttribute('data-filter');
+            if (filterValue === 'all') {
+                renderGallery(allProjects);
+            } else {
+                const filtered = allProjects.filter(p => p.category === filterValue);
+                renderGallery(filtered);
+            }
+        });
+
+        // Avvia l'applicazione al caricamento della pagina
+        window.addEventListener('DOMContentLoaded', loadProjects);
+    </script>
 </body>
 </html>
