@@ -138,7 +138,6 @@
             letter-spacing: 0.05em;
         }
 
-        /* Lightbox */
         .lightbox {
             position: fixed;
             top: 0;
@@ -192,7 +191,6 @@
             opacity: 1;
         }
 
-        /* Sezione Contatti */
         footer {
             max-width: 1400px;
             width: 100%;
@@ -231,12 +229,6 @@
                 gap: 1.5rem;
             }
         }
-
-        .error-message {
-            text-align: center;
-            padding: 4rem;
-            color: var(--accent-color);
-        }
     </style>
 </head>
 <body>
@@ -254,9 +246,7 @@
     </header>
 
     <main>
-        <div id="gallery" class="masonry-grid">
-            <!-- I progetti si caricheranno qui -->
-        </div>
+        <div id="gallery" class="masonry-grid"></div>
     </main>
 
     <footer>
@@ -269,34 +259,16 @@
         <img id="lightbox-img" src="" alt="Ingrandimento">
     </div>
 
+    <!-- Caricamento della lista dei progetti esterna in totale sicurezza -->
+    <script src="./projects.js"></script>
     <script>
-        let allProjects = [];
-
-        // Lettura asincrona ottimizzata anti-blocco per GitHub Pages
-        async function loadProjects() {
-            try {
-                // Aggiungiamo un parametro temporale casuale per forzare il server a evitare blocchi di cache vecchia
-                const response = await fetch(`./projects.json?v=${new Date().getTime()}`);
-                if (!response.ok) throw new Error('File JSON non trovato');
-                
-                allProjects = await response.json();
-                renderGallery(allProjects);
-            } catch (error) {
-                console.error(error);
-                document.getElementById('gallery').innerHTML = `
-                    <div class="error-message">
-                        <p>Caricamento in corso dei progetti... Se non si sblocca, verifica che il file sia nominato correttamente "projects.json" su GitHub.</p>
-                    </div>`;
-            }
-        }
-
         function renderGallery(projectsToRender) {
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = '';
 
             projectsToRender.forEach(project => {
                 const item = document.createElement('div');
-                item.className = `portfolio-item`;
+                item.className = 'portfolio-item';
                 item.setAttribute('data-src', project.imageUrl);
                 
                 item.innerHTML = `
@@ -325,7 +297,6 @@
             }
         });
 
-        // Gestione Lightbox (Zoom)
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
@@ -337,8 +308,6 @@
             lightbox.classList.add('active');
         });
 
-        // ... (resto del codice sopra)
-
         document.getElementById('lightbox-close').addEventListener('click', () => {
             lightbox.classList.remove('active');
         });
@@ -347,8 +316,11 @@
             if (e.target === lightbox) lightbox.classList.remove('active');
         });
 
-        window.addEventListener('DOMContentLoaded', loadProjects);
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof allProjects !== 'undefined') {
+                renderGallery(allProjects);
+            }
+        });
     </script>
 </body>
 </html>
-
