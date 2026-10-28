@@ -13,6 +13,10 @@
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #080808;
             color: #ffffff;
@@ -31,7 +35,20 @@
             margin: 0 auto;
         }
 
-        .logo {
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Logo personalizzato inserito nell'header */
+        .brand-logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
             font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 3px;
@@ -101,6 +118,9 @@
             height: 420px;
             overflow: hidden;
             background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .portfolio-item img {
@@ -109,6 +129,12 @@
             object-fit: cover;
             display: block;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-item.white-bg img {
+            object-fit: contain;
+            background: #ffffff;
+            padding: 2rem;
         }
 
         .portfolio-item:hover img {
@@ -134,11 +160,56 @@
             letter-spacing: 1px;
         }
 
-        /* Footer e Contatti */
+        /* Nuova Sezione Contatti Grande e d'Impatto */
+        .contact-section {
+            max-width: 1200px;
+            margin: 8rem auto;
+            padding: 5rem 3rem;
+            background: linear-gradient(135deg, #111111 0%, #0a0a0a 100%);
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-section p {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            background-color: #e5e5e5;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
         footer {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 0;
+            padding: 3rem 0;
             border-top: 1px solid #1a1a1a;
             display: flex;
             justify-content: space-between;
@@ -147,24 +218,16 @@
             font-size: 0.85rem;
         }
 
-        footer a {
-            color: #888;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: #fff;
-        }
-
         /* Responsive Mobile */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             header { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .brand-container { flex-direction: column; gap: 0.5rem; }
             nav a { margin: 0 1rem; }
             .portfolio-grid { grid-template-columns: 1fr; gap: 2rem; }
             .portfolio-item .img-container { height: 380px; }
+            .contact-section { padding: 3rem 1.5rem; margin: 4rem auto; }
+            .contact-section h2 { font-size: 2rem; }
             footer { flex-direction: column; gap: 1.5rem; text-align: center; }
         }
     </style>
@@ -173,7 +236,10 @@
 
     <!-- Navigazione -->
     <header>
-        <div class="logo">Federico Dudiez</div>
+        <div class="brand-container">
+            <img src="https://ibb.co" alt="Federico Dudiez Logo" class="brand-logo-img">
+            <div class="logo-text">Federico Dudiez</div>
+        </div>
         <nav>
             <a href="#progetti">Progetti</a>
             <a href="#contatti">Contatti</a>
@@ -188,11 +254,55 @@
 
     <!-- Griglia Elementi Portfolio -->
     <main class="portfolio-grid" id="progetti">
-        
-        <!-- Elemento 1: Vibes Magazine -->
+
+        <!-- Elemento 1: Union Jack Geometric Concept -->
         <div class="portfolio-item">
             <div class="img-container">
-                <img src="https://i.ibb.co/35XCQYpF/copertina-auto.jpg" alt="Vibes Motoring Magazine">
+                <img src="https://ibb.co" alt="Union Jack Geometric Layout">
+            </div>
+            <div class="item-info">
+                <h3>Union Jack Geometric Concept</h3>
+                <p>Vector Design / Abstract Art</p>
+            </div>
+        </div>
+
+        <!-- Elemento 2: Mini Cooper Logo Left -->
+        <div class="portfolio-item white-bg">
+            <div class="img-container">
+                <img src="https://ibb.co" alt="MINI COOPER Logo Custom Left">
+            </div>
+            <div class="item-info">
+                <h3>MINI COOPER Branding (Left Orientation)</h3>
+                <p>Logo Design / Automotive</p>
+            </div>
+        </div>
+
+        <!-- Elemento 3: Mini Cooper Logo Right -->
+        <div class="portfolio-item white-bg">
+            <div class="img-container">
+                <img src="https://ibb.co" alt="MINI COOPER Logo Custom Right">
+            </div>
+            <div class="item-info">
+                <h3>MINI COOPER Branding (Right Orientation)</h3>
+                <p>Logo Design / Automotive</p>
+            </div>
+        </div>
+
+        <!-- Elemento 4: Union Jack Geometric Concept (Seconda Versione) -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://ibb.co" alt="Union Jack Structure Study">
+            </div>
+            <div class="item-info">
+                <h3>Union Jack Structure Study</h3>
+                <p>Line Art / Geometric Composition</p>
+            </div>
+        </div>
+        
+        <!-- Elemento 5: Vibes Magazine -->
+        <div class="portfolio-item">
+            <div class="img-container">
+                <img src="https://ibb.co" alt="Vibes Motoring Magazine">
             </div>
             <div class="item-info">
                 <h3>VIBES Motoring Magazine</h3>
@@ -200,10 +310,10 @@
             </div>
         </div>
 
-        <!-- Elemento 2: Glamour -->
+        <!-- Elemento 6: Glamour -->
         <div class="portfolio-item">
             <div class="img-container">
-                <img src="https://i.ibb.co/0VZGwPxQ/copertina-moda-esercitazione.jpg" alt="Glamour Magazine Concept">
+                <img src="https://ibb.co" alt="Glamour Magazine Concept">
             </div>
             <div class="item-info">
                 <h3>GLAMOUR Style</h3>
@@ -211,112 +321,8 @@
             </div>
         </div>
 
-        <!-- Elemento 3: Strawhay Techno Field -->
+        <!-- Elemento 7: Strawhay Techno Field -->
         <div class="portfolio-item">
             <div class="img-container">
-                <img src="https://i.ibb.co/S4d38382/LOCANDINA-3-0.png" alt="Strawhay Techno Field">
+                <img src="https://ibb.co" alt="Strawhay Techno Field">
             </div>
-            <div class="item-info">
-                <h3>Strawhay Techno Field</h3>
-                <p>Event Poster / Artwork</p>
-            </div>
-        </div>
-
-        <!-- Elemento 4: Techno Road -->
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://i.ibb.co/hFZ0HMb2/techno-road-a3.jpg" alt="Techno Road">
-            </div>
-            <div class="item-info">
-                <h3>Techno Road</h3>
-                <p>Event Flyer / Clubbing Culture</p>
-            </div>
-        </div>
-
-        <!-- Elemento 5: Virtual Rally Campobasso -->
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://i.ibb.co/fdwrH91x/virtual-rally-cb-aggiornato.jpg" alt="Virtual Rally Campobasso">
-            </div>
-            <div class="item-info">
-                <h3>Virtual Rally Campobasso</h3>
-                <p>Event Poster / Sport Graphics</p>
-            </div>
-        </div>
-
-        <!-- Elemento 6: Bivio Bar Event Flyer -->
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://i.ibb.co/G4F42xwX/post-IG.png" alt="Bivio Bar Opening Night">
-            </div>
-            <div class="item-info">
-                <h3>Bivio Bar Event</h3>
-                <p>Social Media Flyer / Fluid Art</p>
-            </div>
-        </div>
-
-        <!-- Elemento 7: Logo Devid -->
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://i.ibb.co/7J9JN0Wy/logo-david-1-page-0001.jpg" alt="DEVid Vinyl Logo">
-            </div>
-            <div class="item-info">
-                <h3>DEVid Vinyl</h3>
-                <p>Logo Design / Identity</p>
-            </div>
-        </div>
-
-        <!-- Elemento 8: Logo Bivio Bar -->
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://i.ibb.co/cc7Qbn7B/Bivio-Barlogo.png" alt="Bivio Bar Logo">
-            </div>
-            <div class="item-info">
-                <h3>Bivio Bar</h3>
-                <p>Minimal Logo Branding</p>
-            </div>
-        </div>
-
-        <!-- Elemento 9: Zeta Audio -->
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://i.ibb.co/YFqsYVJ2/cassa-fuoco.jpg" alt="Zeta Audio Logo">
-            </div>
-            <div class="item-info">
-                <h3>Zeta Audio</h3>
-                <p>Logo Concept / Vector Illustration</p>
-            </div>
-        </div>
-
-        <!-- Elemento 10: Spine -->
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://i.ibb.co/cXx8vKpW/spine.png" alt="Spine Photography">
-            </div>
-            <div class="item-info">
-                <h3>Spine</h3>
-                <p>Black & White Photography</p>
-            </div>
-        </div>
-
-        <!-- Elemento 11: Ticket Entry -->
-        <div class="portfolio-item">
-            <div class="img-container">
-                <img src="https://i.ibb.co/GfTP47XG/ticket-5x5-01.png" alt="Event Ticket Concept">
-            </div>
-            <div class="item-info">
-                <h3>Event Ticket Pass</h3>
-                <p>Print Design / Merchandise</p>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Footer / Contatti -->
-    <footer id="contatti">
-        <div>© 2026 Federico Dudiez. Tutti i diritti riservati.</div>
-        <div>Iniziamo un progetto: <a href="mailto:federico.dudiez@gmail.com">Scrivimi via Email</a></div>
-    </footer>
-
-</body>
-</html>
