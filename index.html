@@ -138,6 +138,60 @@
             letter-spacing: 0.05em;
         }
 
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(6, 6, 8, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 2.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
         /* Sezione Contatti */
         footer {
             max-width: 1400px;
@@ -201,7 +255,7 @@
 
     <main>
         <div id="gallery" class="masonry-grid">
-            <!-- I progetti verranno inseriti dinamicamente qui -->
+            <!-- I progetti si caricheranno qui -->
         </div>
     </main>
 
@@ -210,13 +264,20 @@
         <a href="mailto:federico.dudiez@gmail.com" class="contact-email">federico.dudiez@gmail.com</a>
     </footer>
 
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <img id="lightbox-img" src="" alt="Ingrandimento">
+    </div>
+
     <script>
         let allProjects = [];
 
+        // Lettura asincrona ottimizzata anti-blocco per GitHub Pages
         async function loadProjects() {
             try {
-                const response = await fetch('./projects.json');
-                if (!response.ok) throw new Error('Impossibile caricare il file JSON dei progetti');
+                // Aggiungiamo un parametro temporale casuale per forzare il server a evitare blocchi di cache vecchia
+                const response = await fetch(`./projects.json?v=${new Date().getTime()}`);
+                if (!response.ok) throw new Error('File JSON non trovato');
                 
                 allProjects = await response.json();
                 renderGallery(allProjects);
@@ -224,7 +285,7 @@
                 console.error(error);
                 document.getElementById('gallery').innerHTML = `
                     <div class="error-message">
-                        <p>Errore nel caricamento dei progetti. Verifica che projects.json sia presente e formattato correttamente.</p>
+                        <p>Caricamento in corso dei progetti... Se non si sblocca, verifica che il file sia nominato correttamente "projects.json" su GitHub.</p>
                     </div>`;
             }
         }
@@ -236,6 +297,7 @@
             projectsToRender.forEach(project => {
                 const item = document.createElement('div');
                 item.className = `portfolio-item`;
+                item.setAttribute('data-src', project.imageUrl);
                 
                 item.innerHTML = `
                     <img src="${project.imageUrl}" alt="${project.title}" loading="lazy">
@@ -263,7 +325,30 @@
             }
         });
 
+        // Gestione Lightbox (Zoom)
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.getElementById('gallery').addEventListener('click', (e) => {
+            const item = e.target.closest('.portfolio-item');
+            if (!item) return;
+
+            lightboxImg.src = item.getAttribute('data-src');
+            lightbox.classList.add('active');
+        });
+
+        // ... (resto del codice sopra)
+
+        document.getElementById('lightbox-close').addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.classList.remove('active');
+        });
+
         window.addEventListener('DOMContentLoaded', loadProjects);
     </script>
 </body>
 </html>
+
