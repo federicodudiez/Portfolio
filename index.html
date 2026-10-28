@@ -146,15 +146,18 @@
         </div>
     </main>
 
-    <section class="contact-section" id="contatti">
+        <section class="contact" id="contatti">
         <h2>Iniziamo un progetto insieme</h2>
-        <p>Hai un'idea visiva da sviluppare o hai bisogno di strutturare l'identità del tuo brand commerciale? Scrivimi oggi stesso per avviare una collaborazione.</p>
-        <a href="mailto:federico.dudiez@gmail.com" class="contact-button">Manda un'Email</a>
+        <p>Hai un'idea visiva da sviluppare o vuoi strutturare l'identità del tuo brand commerciale? Compila il modulo sotto per inviarmi direttamente un messaggio sulla mia mail.</p>
+        
+        <!-- Modulo di contatto diretto su Gmail senza blocchi del browser -->
+        <form action="https://formsubmit.co" method="POST" style="max-width: 500px; margin: 2rem auto 0 auto; display: flex; flex-direction: column; gap: 1.2rem; text-align: left;">
+            <input type="text" name="name" placeholder="Il tuo nome" required style="width: 100%; padding: 1rem; background: #161616; border: 1px solid #222; border-radius: 6px; color: #fff; font-size: 1rem;">
+            <input type="email" name="email" placeholder="La tua email" required style="width: 100%; padding: 1rem; background: #161616; border: 1px solid #222; border-radius: 6px; color: #fff; font-size: 1rem;">
+            <textarea name="message" placeholder="Descrivi il tuo progetto..." rows="5" required style="width: 100%; padding: 1rem; background: #161616; border: 1px solid #222; border-radius: 6px; color: #fff; font-size: 1rem; resize: none;"></textarea>
+            <button type="submit" class="btn" style="width: 100%; cursor: pointer; border: none;">Invia Messaggio</button>
+        </form>
     </section>
-
-    <footer>
-        <div>© 2026 Federico Dudiez. Tutti i diritti riservati.</div>
-    </footer>
 
 </body>
 </html>
