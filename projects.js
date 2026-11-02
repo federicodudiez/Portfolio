@@ -1,8 +1,8 @@
 const tuttiIProgetti = [
   {
-    "titolo": "Esplorazione geometrica astratta",
+    "titolo": "Logo design",
     "categoria": "progetto",
-    "imageUrl": "https://i.ibb.co/Tf7nQZg/spine.png",
+    "imageUrl": "https://i.ibb.co/d04BB6xJ/cassa-fuoco.jpg",
     "etichetta": "Arti visive / Illustrazione vettoriale"
   },
   {
@@ -36,25 +36,25 @@ const tuttiIProgetti = [
     "etichetta": "Progettazione del logo / Identità aziendale"
   },
   {
-    "titolo": "Natura morta in chiaroscuro",
+    "titolo": "Fotografia e postproduzione",
     "categoria": "fotografia",
-    "imageUrl": "https://i.ibb.co/d04BB6xJ/cassa-fuoco.jpg",
-    "etichetta": "Fotografia commerciale / Belle arti"
+    "imageUrl": "https://i.ibb.co/Tf7nQZg/spine.png",
+    "etichetta": "Fotografia commerciale"
   },
   {
     "titolo": "Editoriale automobilistico - Copertina concettuale",
     "categoria": "fotografia",
     "imageUrl": "https://i.ibb.co/pBFXSQZX/copertina-auto.jpg",
-    "etichetta": "Fotografia automobilistica / Direzione artistica"
+    "etichetta": "Proggettazione / Design editoriale"
   },
   {
     "titolo": "Servizio fotografico di moda - Concept per rivista",
     "categoria": "fotografia",
     "imageUrl": "https://i.ibb.co/xqbHyNzh/copertina-moda-esercitazione.jpg",
-    "etichetta": "Fotografia di moda / Design editoriale"
+    "etichetta": "Design di moda / Design editoriale"
   },
   {
-    "titolo": "Poster dal campo techno di Strawhay",
+    "titolo": "Evento Strawhay",
     "categoria": "progetto",
     "imageUrl": "https://i.ibb.co/pgn6zmR/LOCANDINA-3-0.png",
     "etichetta": "Progettazione di poster / Marketing per eventi"
@@ -66,13 +66,13 @@ const tuttiIProgetti = [
     "etichetta": "Sistema di identità visiva / Logo minimalista"
   },
   {
-    "titolo": "Impaginazione editoriale per i social media",
+    "titolo": "Locandina per evento",
     "categoria": "progetto",
     "imageUrl": "https://i.ibb.co/xq44XSM8/post-IG.png",
-    "etichetta": "Progettazione di contenuti per i social media / Creazione di contenuti"
+    "etichetta": "Contenuti per i social media / Illustrazione per poste"
   },
   {
-    "titolo": "Poster Techno Road (A3)",
+    "titolo": "Poster Techno Road",
     "categoria": "progetto",
     "imageUrl": "https://i.ibb.co/pBF86xDb/techno-road-a3.jpg",
     "etichetta": "Progettazione grafica per la stampa / Illustrazione per poster"
@@ -81,12 +81,12 @@ const tuttiIProgetti = [
     "titolo": "Progettazione di pass e biglietti d'ingresso per eventi",
     "categoria": "progetto",
     "imageUrl": "https://i.ibb.co/ZR8QJ5kX/ticket-5x5-01.png",
-    "etichetta": "Impaginazione di stampa / Branding"
+    "etichetta": "File per la stampa / Branding"
   },
   {
-    "titolo": "Campionato di Rally Virtuale - Campagna",
+    "titolo": "Locandina evento Rally",
     "categoria": "progetto",
     "imageUrl": "https://i.ibb.co/mCnGvNvz/virtual-rally-cb-aggiornato.jpg",
-    "etichetta": "Immagine chiave / Design del poster"
+    "etichetta": "File per la stampa / Design del poster"
   }
 ];
