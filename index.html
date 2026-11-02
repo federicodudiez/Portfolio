@@ -32,7 +32,7 @@
         header {
             max-width: 1400px;
             width: 100%;
-            margin: 0 auto 4rem auto;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
@@ -41,7 +41,7 @@
         .brand h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            letter-spacing: -0.05em;
+            letter-spacing: -0.05rem;
             text-transform: uppercase;
         }
 
@@ -66,6 +66,7 @@
         @media (max-width: 1024px) {
             .masonry-grid { column-count: 2; }
         }
+
         @media (max-width: 600px) {
             .masonry-grid { column-count: 1; }
         }
@@ -78,7 +79,7 @@
             background: #1c1c1e;
             border-radius: 4px;
             cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .portfolio-item:hover {
@@ -90,7 +91,7 @@
             height: auto;
             display: block;
             filter: grayscale(20%);
-            transition: filter 0.4s;
+            transition: filter 0.45s;
         }
 
         .portfolio-item:hover img {
@@ -105,7 +106,7 @@
             padding: 2rem 1.5rem 1.5rem 1.5rem;
             background: linear-gradient(transparent, rgba(0,0,0,0.85));
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.35s;
         }
 
         .portfolio-item:hover .item-overlay {
@@ -121,7 +122,7 @@
             font-size: 0.85rem;
             color: #d1d1d6;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.05rem;
         }
 
         .lightbox {
@@ -136,7 +137,7 @@
             align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.35s ease;
             z-index: 1000;
             padding: 2rem;
         }
@@ -153,7 +154,7 @@
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             transform: scale(0.95);
-            transition: transform 0.3s ease;
+            transition: transform 0.35s ease;
         }
 
         .lightbox.active img {
@@ -170,7 +171,7 @@
             font-size: 2.5rem;
             cursor: pointer;
             opacity: 0.7;
-            transition: opacity 0.3s;
+            transition: opacity 0.35s;
         }
 
         .lightbox-close:hover {
@@ -180,7 +181,7 @@
         footer {
             max-width: 1400px;
             width: 100%;
-            margin: 6rem auto 2rem auto;
+            margin: 6rem auto 0 auto;
             border-top: 1px solid #2c2c2e;
             padding-top: 3rem;
             display: flex;
@@ -191,18 +192,18 @@
         .contact-left .contact-title {
             font-size: 1.5rem;
             font-weight: 600;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.02rem;
             margin-bottom: 0.5rem;
         }
 
-        .email-copy-wrapper {
+        .email-header-text {
             display: inline-flex;
             align-items: center;
             gap: 1rem;
         }
 
-        .contact-email {
-            font-size: 1.2rem;
+        .contact-email-link {
+            font-size: 1.7rem;
             color: var(--text-color);
             background: none;
             border: none;
@@ -210,11 +211,11 @@
             font-weight: 500;
             cursor: pointer;
             padding: 0;
-            transition: color 0.3s;
+            transition: color 0.35s;
             border-bottom: 1px solid transparent;
         }
 
-        .contact-email:hover {
+        .contact-email-link:hover {
             color: var(--accent-color);
             border-bottom: 1px solid var(--accent-color);
         }
@@ -223,10 +224,10 @@
             font-size: 0.85rem;
             color: var(--success-color);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.05rem;
             font-weight: 600;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.35s ease;
         }
 
         .copy-toast.show {
@@ -240,11 +241,11 @@
             gap: 0.5rem;
         }
 
-        .contact-right span {
+        .contact-right .label {
             color: var(--muted-color);
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.05rem;
         }
 
         .social-link {
@@ -252,7 +253,7 @@
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.35s;
             border-bottom: 1px solid transparent;
         }
 
@@ -277,26 +278,26 @@
 
     <header>
         <div class="brand">
-            <h1>My Portfolio</h1>
-            <p>Graphic Design & Fotografia</p>
+            <h1>Il mio portfolio</h1>
+            <p>Progettazione grafica e fotografia</p>
         </div>
     </header>
 
     <main>
-        <div id="gallery" class="masonry-grid"></div>
+        <div id="galleria" class="masonry-grid"></div>
     </main>
 
     <footer>
         <div class="contact-left">
             <div class="contact-title">Mettiamoci in contatto</div>
-            <div class="email-copy-wrapper">
-                <button class="contact-email" id="copy-email-btn" title="Clicca per copiare">federico.dudiez@gmail.com</button>
+            <div class="email-header-text">
+                <button class="contact-email-link" id="copy-email-btn" title="Clicca per copiare">federico.dudiez@gmail.com</button>
                 <span class="copy-toast" id="copy-toast">Copiato!</span>
             </div>
         </div>
         <div class="contact-right">
-            <span>Social</span>
-            <a href="https://www.instagram.com/federicodgraphic/" target="_blank" class="social-link">Instagram</a>
+            <span class="label">Social</span>
+            <a href="https://instagram.com" target="_blank" class="social-link">Instagram</a>
         </div>
     </footer>
 
@@ -304,25 +305,25 @@
         <button class="lightbox-close" id="lightbox-close">&times;</button>
         <img id="lightbox-img" src="" alt="Ingrandimento">
     </div>
-
     <script src="./projects.js"></script>
     <script>
         function renderGallery(projectsToRender) {
-            const gallery = document.getElementById('gallery');
+            const gallery = document.getElementById('galleria');
             gallery.innerHTML = '';
 
             projectsToRender.forEach(project => {
                 const item = document.createElement('div');
                 item.className = 'portfolio-item';
                 item.setAttribute('data-src', project.imageUrl);
-                
+
                 item.innerHTML = `
-                    <img src="${project.imageUrl}" alt="${project.title}" loading="lazy">
+                    <img src="${project.imageUrl}" alt="${project.titolo}" loading="lazy">
                     <div class="item-overlay">
-                        <h3>${project.title}</h3>
-                        <p>${project.tag}</p>
+                        <h3>${project.titolo}</h3>
+                        <p>${project.etichetta}</p>
                     </div>
                 `;
+
                 gallery.appendChild(item);
             });
         }
@@ -330,7 +331,7 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
-        document.getElementById('gallery').addEventListener('click', (e) => {
+        document.getElementById('galleria').addEventListener('click', (e) => {
             const item = e.target.closest('.portfolio-item');
             if (!item) return;
 
@@ -353,18 +354,17 @@
                 toast.classList.add('show');
                 setTimeout(() => {
                     toast.classList.remove('show');
-                     }, 2000);
-    }).catch(err => {
-        console.error('Errore durante la copia: ', err);
-    });
-});
+                }, 2000);
+            }).catch(err => {
+                console.error('Errore durante la copia: ', err);
+            });
+        });
 
-window.addEventListener('DOMContentLoaded', () => {
-    if (typeof allProjects !== 'undefined') {
-        renderGallery(allProjects);
-    }
-});
-</script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof tuttiIProgetti !== 'undefined') {
+                renderGallery(tuttiIProgetti);
+            }
+        });
+    </script>
 </body>
 </html>
-
